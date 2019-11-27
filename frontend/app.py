@@ -1,4 +1,4 @@
-from __init__ import app, db , migrate
+from __init__ import app
 
 def index():
     return render_template('index.html')
