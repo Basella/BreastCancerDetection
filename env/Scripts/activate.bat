@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\User\Documents\BreastCancerDetection\env"
+set "VIRTUAL_ENV=C:\Users\User\Documents\Projects\Jessica\BreastCancerDetection\env"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
