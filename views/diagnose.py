@@ -1,7 +1,12 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
+from frontend.forms import TextForm
 
 diagnose = Blueprint('diagnose', __name__)
 
-@diagnose.route('/diagnose/<int:meanradiusvalue>/<int:meantexturevalue>/<int:meanperimetervalue>/<int:meanareavalue>/<int:meansmoothnessvalue>/<int:meancompactnessvalue>/<int:meanconcavityvalue>/<int:meanconcavepointsvalue>/<int:meansymmetryvalue>/<int:meanfractaldimensionvalue>/<int:radiuserrorvalue>/<int:textureerrorvalue>/<int:perimetererrorvalue>/<int:areaerrorvalue>/<int:smoothnesserrorvalue>/<int:compactnesserrorvalue>/<int:concavityerrorvalue>/<int:concavepointserrorvalue>/<int:symmetryerrorvalue>/<int:fractaldimensionerrorvalue>/<int:worstradiusvalue>/<int:worsttexturevalue>/<int:worstperimetervalue>/<int:worstareavalue>/<int:worstsmoothnessvalue>/<int:worstcompactnessvalue>/<int:worstconcavityvalue>/<int:worstconcavepointsvalue>/<int:worstsymmetryvalue>/<int:worstfractaldimensionvalue>')
-def diagnosepage(meanradiusvalue, meantexturevalue, meanperimetervalue, meanareavalue, meansmoothnessvalue, meancompactnessvalue, meanconcavityvalue, meanconcavepointsvalue, meansymmetryvalue, meanfractaldimensionvalue, radiuserrorvalue, textureerrorvalue, perimetererrorvalue, areaerrorvalue, smoothnesserrorvalue, compactnesserrorvalue, concavityerrorvalue, concavepointserrorvalue, symmetryerrorvalue, fractaldimensionerrorvalue, worstradiusvalue, worsttexturevalue, worstperimetervalue, worstareavalue, worstsmoothnessvalue, worstcompactnessvalue, worstconcavityvalue, worstconcavepointsvalue, worstsymmetryvalue, worstfractaldimensionvalue):
-    return render_template('diagnose/diagnose.html')
+
+@diagnose.route('/diagnose', methods=["GET", "POST"])
+def diagnosepatient():
+    form = TextForm()
+    if form.validate_on_submit():
+        return redirect(url_for('result'))
+    return render_template('diagnose/diagnose.html', title='Diagnose', form=form)

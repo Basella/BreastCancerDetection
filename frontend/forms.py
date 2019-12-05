@@ -1,0 +1,37 @@
+from flask_wtf import Form
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import  DataRequired, Email
+
+class TextForm(Form):
+    meanradiusvalue = StringField('meanradiusvalue', validators=[DataRequired()])
+    meantexturevalue = StringField('meantexturevalue', validators=[DataRequired()])
+    meanperimetervalue = StringField('meanperimetervalue', validators=[DataRequired()])
+    meanareavalue = StringField('meanareavalue', validators=[DataRequired()])
+    meansmoothnessvalue = StringField('meansmoothnessvalue', validators=[DataRequired()])
+    meancompactnessvalue = StringField('meancompactnessvalue', validators=[DataRequired()])
+    meanconcavityvalue = StringField('meanconcavityvalue', validators=[DataRequired()])
+    meanconcavepointsvalue = StringField('meanconcavepointsvalue', validators=[DataRequired()])
+    meansymmetryvalue = StringField('meansymmetryvalue', validators=[DataRequired()])
+    meanfractaldimensionvalue = StringField('meanfractaldimensionvalue', validators=[DataRequired()])
+    radiuserrorvalue = StringField('radiuserrorvalue', validators=[DataRequired()])
+    textureerrorvalue = StringField('textureerrorvalue', validators=[DataRequired()])
+    perimetererrorvalue = StringField('perimetererrorvalue', validators=[DataRequired()])
+    areaerrorvalue = StringField('areaerrorvalue', validators=[DataRequired()])
+    smoothnesserrorvalue = StringField('smoothnesserrorvalue', validators=[DataRequired()])
+    compactnesserrorvalue = StringField('compactnesserrorvalue', validators=[DataRequired()])
+    concavityerrorvalue = StringField('concavityerrorvalue', validators=[DataRequired()])
+    concavepointserrorvalue = StringField('concavepointserrorvalue', validators=[DataRequired()])
+    symmetryerrorvalue = StringField('symmetryerrorvalue', validators=[DataRequired()])
+    fractaldimensionerrorvalue = StringField('fractaldimensionerrorvalue', validators=[DataRequired()])
+    worstradiusvalue = StringField('worstradiusvalue', validators=[DataRequired()])
+    worsttexturevalue = StringField('worsttexturevalue', validators=[DataRequired()])
+    worstperimetervalue = StringField('worstperimetervalue', validators=[DataRequired()])
+    worstareavalue = StringField('worstareavalue', validators=[DataRequired()])
+    worstsmoothnessvalue = StringField('worstsmoothnessvalue', validators=[DataRequired()])
+    worstcompactnessvalue = StringField('worstcompactnessvalue', validators=[DataRequired()])
+    worstconcavityvalue = StringField('worstconcavityvalue', validators=[DataRequired()])
+    worstconcavepointsvalue = StringField('worstconcavepointsvalue', validators=[DataRequired()])
+    worstsymmetryvalue = StringField('worstsymmetryvalue', validators=[DataRequired()])
+    worstfractaldimensionvalue = StringField('worstfractaldimensionvalue', validators=[DataRequired()])
+
+    diagnose = SubmitField('Diagnose')

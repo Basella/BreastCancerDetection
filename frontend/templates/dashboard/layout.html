@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% assets "dashboard_css" %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css }}" />
+    {% endassets %}
+</head>
+
+<body>
+
+    {% block body %}
+    {{ super() }}
+    <h3>This site assists in the detection of breast cancer using Machine learning.</h3>
+    <p>The model used is Support Vector Model(SVM)</p>
+    {% endblock %}
+
+</body>
+
+</html>

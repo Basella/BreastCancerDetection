@@ -1,0 +1,260 @@
+{% extends "layout.html" %}
+<html>
+
+<head>
+    <title>Diagnose Page</title>
+</head>
+
+<body>
+    {% block body %}
+    {{ super() }}
+
+    <form action="{{ url_for('result') }}" method="post" novalidate>
+
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.meanradiusvalue.label }}<br>
+            {{ form.meanradiusvalue(size=32) }}<br>
+
+            {% for error in form.meanradiusvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meantexturevalue.label }}<br>
+            {{ form.meantexturevalue(size=32) }}
+
+            {% for error in form.meantexturevalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meanperimetervalue.label }}<br>
+            {{ form.meanperimetervalue(size=32) }}
+
+            {% for error in form.meanperimetervalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meanareavalue.label }}<br>
+            {{ form.meanareavalue(size=32) }}
+
+            {% for error in form.meanareavalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meansmoothnessvalue.label }}<br>
+            {{ form.meansmoothnessvalue(size=32) }}
+
+            {% for error in form.meansmoothnessvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meancompactnessvalue.label }}<br>
+            {{ form.meancompactnessvalue(size=32) }}
+
+            {% for error in form.meancompactnessvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meanconcavityvalue.label }}<br>
+            {{ form.meanconcavityvalue(size=32) }}
+
+            {% for error in form.meanconcavityvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meanconcavepointsvalue.label }}<br>
+            {{ form.meanconcavepointsvalue(size=32) }}
+
+            {% for error in form.meanconcavepointsvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meansymmetryvalue.label }}<br>
+            {{ form.meansymmetryvalue(size=32) }}
+
+            {% for error in form.meansymmetryvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.meanfractaldimensionvalue.label }}<br>
+            {{ form.meanfractaldimensionvalue(size=32) }}
+
+            {% for error in form.meanfractaldimensionvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.radiuserrorvalue.label }}<br>
+            {{ form.radiuserrorvalue(size=32) }}
+
+            {% for error in form.radiuserrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.textureerrorvalue.label }}<br>
+            {{ form.textureerrorvalue(size=32) }}
+
+            {% for error in form.textureerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.perimetererrorvalue.label }}<br>
+            {{ form.perimetererrorvalue(size=32) }}
+
+            {% for error in form.perimetererrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.areaerrorvalue.label }}<br>
+            {{ form.areaerrorvalue(size=32) }}
+
+            {% for error in form.areaerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.smoothnesserrorvalue.label }}<br>
+            {{ form.smoothnesserrorvalue(size=32) }}
+
+            {% for error in form.smoothnesserrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.compactnesserrorvalue.label }}<br>
+            {{ form.compactnesserrorvalue(size=32) }}
+
+            {% for error in form.compactnesserrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.concavityerrorvalue.label }}<br>
+            {{ form.concavityerrorvalue(size=32) }}
+
+            {% for error in form.concavityerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.symmetryerrorvalue.label }}<br>
+            {{ form.symmetryerrorvalue(size=32) }}
+
+            {% for error in form.symmetryerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.fractaldimensionerrorvalue.label }}<br>
+            {{ form.fractaldimensionerrorvalue(size=32) }}
+
+            {% for error in form.fractaldimensionerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstradiusvalue.label }}<br>
+            {{ form.worstradiusvalue(size=32) }}
+
+            {% for error in form.worstradiusvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worsttexturevalue.label }}<br>
+            {{ form.worsttexturevalue(size=32) }}
+
+            {% for error in form.worsttexturevalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstperimetervalue.label }}<br>
+            {{ form.worstperimetervalue(size=32) }}
+
+            {% for error in form.worstperimetervalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstareavalue.label }}<br>
+            {{ form.worstareavalue(size=32) }}
+
+            {% for error in form.worstareavalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstsmoothnessvalue.label }}<br>
+            {{ form.worstsmoothnessvalue(size=32) }}
+
+            {% for error in form.worstsmoothnessvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstcompactnessvalue.label }}<br>
+            {{ form.worstcompactnessvalue(size=32) }}
+
+            {% for error in form.worstcompactnessvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstconcavityvalue.label }}<br>
+            {{ form.worstconcavityvalue(size=32) }}
+
+            {% for error in form.worstconcavityvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstconcavepointsvalue.label }}<br>
+            {{ form.worstconcavepointsvalue(size=32) }}
+
+            {% for error in form.worstconcavepointsvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstsymmetryvalue.label }}<br>
+            {{ form.worstsymmetryvalue(size=32) }}
+
+            {% for error in form.worstsymmetryvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p>
+            {{ form.worstfractaldimensionvalue.label }}<br>
+            {{ form.worstfractaldimensionvalue(size=32) }}
+
+            {% for error in form.worstfractaldimensionvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+
+        <p>
+            {{ form.diagnose() }}
+        </p>
+        <!-- <input type="text" name="meanradiusvalue" id="meanradiusvalue">
+        <input type="text" name="meantexturevalue" id="meantexturevalue">
+        <input type="text" name="meanperimetervalue" id="meanperimetervalue">
+        <input type="text" name="meanareavalue" id="meanareavalue">
+        <input type="text" name="meansmoothnessvalue" id="meansmoothnessvalue">
+        <input type="text" name="meancompactnessvalue" id="meancompactnessvalue">
+        <input type="text" name="meanconcavityvalue" id="meanconcavityvalue">
+        <input type="text" name="meanconcavepointsvalue" id="meanconcavepointsvalue">
+        <input type="text" name="meansymmetryvalue" id="meansymmetryvalue">
+        <input type="text" name="meanfractaldimensionvalue" id="meanfractaldimensionvalue">
+        <input type="text" name="radiuserrorvalue" id="radiuserrorvalue">
+        <input type="text" name="textureerrorvalue" id="textureerrorvalue">
+        <input type="text" name="perimetererrorvalue" id="perimetererrorvalue">
+        <input type="text" name="areaerrorvalue" id="areaerrorvalue">
+        <input type="text" name="smoothnesserrorvalue" id="smoothnesserrorvalue">
+        <input type="text" name="compactnesserrorvalue" id="compactnesserrorvalue">
+        <input type="text" name="concavityerrorvalue" id="concavityerrorvalue">
+        <input type="text" name="concavepointserrorvalue" id="concavepointserrorvalue">
+        <input type="text" name="symmetryerrorvalue" id="symmetryerrorvalue">
+        <input type="text" name="fractaldimensionerrorvalue" id="fractaldimensionerrorvalue">
+        <input type="text" name="worstradiusvalue" id="worstradiusvalue">
+        <input type="text" name="worsttexturevalue" id="worsttexturevalue">
+        <input type="text" name="worstperimetervalue" id="worstperimetervalue">
+        <input type="text" name="worstareavalue" id="worstareavalue">
+        <input type="text" name="worstsmoothnessvalue" id="worstsmoothnessvalue">
+        <input type="text" name="worstcompactnessvalue" id="worstcompactnessvalue">
+        <input type="text" name="worstconcavityvalue" id="worstconcavityvalue">
+        <input type="text" name="worstconcavepointsvalue" id="worstconcavepointsvalue">
+        <input type="text" name="worstsymmetryvalue" id="worstsymmetryvalue">
+        <input type="text" name="worstfractaldimensionvalue" id="worstfractaldimensionvalue"> -->
+
+        {{ form.csrf_token }}
+    </form>
+    {% endblock %}
+
+</body>
+
+</html>
