@@ -1,6 +1,6 @@
 pip install virtualenv
 virtualenv env
-env/bin/activate
+env/Scripts/activate
 pip install flask flask_sqlalchemy flask_migrate
 pip install flask_assets
 pip install cssmin
