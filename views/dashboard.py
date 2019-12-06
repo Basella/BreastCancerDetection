@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
-dashboard = Blueprint('dashboard', __name__)
+dashboard_blueprint = Blueprint('dashboard', __name__)
 
-@dashboard.route('/dashboard')
-def dashboardpage():
-    return render_template('dashboard/dashboard.html')
+# @dashboard.route(url_for('dashboard'))
+# def dashboard():
+#     return render_template('dashboard/dashboard.html')

@@ -1,4 +1,4 @@
-{% from "macros.html" import nav_link with context %}
+<!-- {% from "macros.html" import nav_link with context %} -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,26 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-    {% block head %}
-    <title></title>
-    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
 
 </head>
 
 <body>
 
-    <ul class="nav-list">
-        {{ nav_link('dashboard', 'Home') }}
-        {{ nav_link('diagnose', 'Diagnose') }}
-    </ul>
-
     {% block body %}
-    <h2>Welcome to the Breast Cancer Detector</h2>
+        <div class="conHouse">
+            <!-- <img class="bgImage" src="../static/img/breastcancergamma.jpg" style="width: 100%; height: 100%;"> -->
+            <h1 class="txt">Welcome to the Breast Cancer Detector</h1>
+
+            <footer>
+                    <p>Basella et thaDev</p>
+            </footer>
+        </div>
+
+    
+
     {% endblock %}
 </body>
 
-<footer>
-    <p>Basella et thaDev</p>
-</footer>
+
 
 </html>

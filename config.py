@@ -14,3 +14,4 @@ class Config(object):
 
     # set the SECRET_KEY for CSRF
     # SECRET_KEY
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'youwillneverguess'
