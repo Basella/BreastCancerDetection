@@ -9,207 +9,214 @@
     {% block body %}
     {{ super() }}
 
-    <form action="{{ url_for('result') }}" method="post" novalidate>
+    <form action="/api/get_user_input" method="POST" novalidate>
 
         {{ form.hidden_tag() }}
 
-        <p>
+        <p id="radValue", name="radValue">
             {{ form.meanradiusvalue.label }}<br>
             {{ form.meanradiusvalue(size=32) }}<br>
 
             {% for error in form.meanradiusvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="textureValue", name="textureValue">
             {{ form.meantexturevalue.label }}<br>
             {{ form.meantexturevalue(size=32) }}
 
             {% for error in form.meantexturevalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="perValue", name="perValue">
             {{ form.meanperimetervalue.label }}<br>
             {{ form.meanperimetervalue(size=32) }}
 
             {% for error in form.meanperimetervalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="areaValue", name="areaValue">
             {{ form.meanareavalue.label }}<br>
             {{ form.meanareavalue(size=32) }}
 
             {% for error in form.meanareavalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="smoothValue", name="smoothValue">
             {{ form.meansmoothnessvalue.label }}<br>
             {{ form.meansmoothnessvalue(size=32) }}
 
             {% for error in form.meansmoothnessvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="compactValue", name="compactValue">
             {{ form.meancompactnessvalue.label }}<br>
             {{ form.meancompactnessvalue(size=32) }}
 
             {% for error in form.meancompactnessvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="concaveValue", name="concaveValue">
             {{ form.meanconcavityvalue.label }}<br>
             {{ form.meanconcavityvalue(size=32) }}
 
             {% for error in form.meanconcavityvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="cpointsValue", name="cpointsValue">
             {{ form.meanconcavepointsvalue.label }}<br>
             {{ form.meanconcavepointsvalue(size=32) }}
 
             {% for error in form.meanconcavepointsvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="symValue", name="symValue">
             {{ form.meansymmetryvalue.label }}<br>
             {{ form.meansymmetryvalue(size=32) }}
 
             {% for error in form.meansymmetryvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="fractValue", name="fractValue">
             {{ form.meanfractaldimensionvalue.label }}<br>
             {{ form.meanfractaldimensionvalue(size=32) }}
 
             {% for error in form.meanfractaldimensionvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="raderrValue", name="raderrValue">
             {{ form.radiuserrorvalue.label }}<br>
             {{ form.radiuserrorvalue(size=32) }}
 
             {% for error in form.radiuserrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="textureerrValue", name="textureerrValue">
             {{ form.textureerrorvalue.label }}<br>
             {{ form.textureerrorvalue(size=32) }}
 
             {% for error in form.textureerrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="pererrValue", name="pererrValue">
             {{ form.perimetererrorvalue.label }}<br>
             {{ form.perimetererrorvalue(size=32) }}
 
             {% for error in form.perimetererrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="areaerrValue", name="areaerrValue">
             {{ form.areaerrorvalue.label }}<br>
             {{ form.areaerrorvalue(size=32) }}
 
             {% for error in form.areaerrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="smootherrValue", name="smootherrValue">
             {{ form.smoothnesserrorvalue.label }}<br>
             {{ form.smoothnesserrorvalue(size=32) }}
 
             {% for error in form.smoothnesserrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="compacterrValue", name="compacterrValue">
             {{ form.compactnesserrorvalue.label }}<br>
             {{ form.compactnesserrorvalue(size=32) }}
 
             {% for error in form.compactnesserrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="concaveerrValue", name="concaveerrValue">
             {{ form.concavityerrorvalue.label }}<br>
             {{ form.concavityerrorvalue(size=32) }}
 
             {% for error in form.concavityerrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="cpointserrValue", name="cpointserrValue">
+            {{ form.concavepointserrorvalue.label }}<br>
+            {{ form.concavepointserrorvalue(size=32) }}
+
+            {% for error in form.concavityerrorvalue.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        </p>
+        <p id="symerrValue", name="symerrValue">
             {{ form.symmetryerrorvalue.label }}<br>
             {{ form.symmetryerrorvalue(size=32) }}
 
             {% for error in form.symmetryerrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="fracterrValue", name="fracterrValue">
             {{ form.fractaldimensionerrorvalue.label }}<br>
             {{ form.fractaldimensionerrorvalue(size=32) }}
 
             {% for error in form.fractaldimensionerrorvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wradValue", name="wradValue">
             {{ form.worstradiusvalue.label }}<br>
             {{ form.worstradiusvalue(size=32) }}
 
             {% for error in form.worstradiusvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wtextureValue", name="wtextureValue">
             {{ form.worsttexturevalue.label }}<br>
             {{ form.worsttexturevalue(size=32) }}
 
             {% for error in form.worsttexturevalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wperValue", name="wperValue">
             {{ form.worstperimetervalue.label }}<br>
             {{ form.worstperimetervalue(size=32) }}
 
             {% for error in form.worstperimetervalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wareaValue", name="wareaValue">
             {{ form.worstareavalue.label }}<br>
             {{ form.worstareavalue(size=32) }}
 
             {% for error in form.worstareavalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wsmoothValue", name="wsmoothValue">
             {{ form.worstsmoothnessvalue.label }}<br>
             {{ form.worstsmoothnessvalue(size=32) }}
 
             {% for error in form.worstsmoothnessvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wcompactValue", name="wcompactValue">
             {{ form.worstcompactnessvalue.label }}<br>
             {{ form.worstcompactnessvalue(size=32) }}
 
             {% for error in form.worstcompactnessvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wconcaveValue", name="wconcaveValue">
             {{ form.worstconcavityvalue.label }}<br>
             {{ form.worstconcavityvalue(size=32) }}
 
             {% for error in form.worstconcavityvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wcpointsValue", name="wcpointsValue">
             {{ form.worstconcavepointsvalue.label }}<br>
             {{ form.worstconcavepointsvalue(size=32) }}
 
             {% for error in form.worstconcavepointsvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wsymValue" name="wsymValue">
             {{ form.worstsymmetryvalue.label }}<br>
             {{ form.worstsymmetryvalue(size=32) }}
 
             {% for error in form.worstsymmetryvalue.errors %}
             <span style="color: red;">[{{ error }}]</span>
         </p>
-        <p>
+        <p id="wfractValue" name="wfractValue">
             {{ form.worstfractaldimensionvalue.label }}<br>
             {{ form.worstfractaldimensionvalue(size=32) }}
 

@@ -1,9 +1,17 @@
-.conHouse {
+body {
+    overflow: hidden;
+}
+
+.imgClass {
     width: 100%;
     height: 100%;
     background-image: url(../img/breastcancergamma.jpg );
     background-size: cover;
     background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 /* .bgImage { */
@@ -16,26 +24,46 @@
     /* -webkit-filter: blur(6px); */
 /* } */
 
+/* .imgClass {
+    position: absolute;
+    z-index: -1;
+} */
+
+.textPart {
+    z-index: 0;
+}
+
 h1{
     text-align: center;
-    font-size: 3em;
+    font-size: 4em;
     color: rgb(229, 92, 241);
 }
 
-.txt {
+h3, .txt {
+    text-align: right;
+    font-size: 2em;
+    color: rgb(43, 70, 226);
+}
+
+/* .txt {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 footer{
     background-color: rgb(229, 92, 241);
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 2.5em;
     text-align: right;
     font-style: italic;
     color: white;
+}
+
+.footerTxt {
+    padding: 3%;
 }
