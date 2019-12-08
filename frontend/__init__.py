@@ -34,10 +34,6 @@ app.register_blueprint(result)
 def index():
     return render_template("layout.html")
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template("dashboard/dashboard.html")
-
 @app.route('/diagnose', methods=["GET", "POST"])
 def diagnose():
     form = TextForm()
@@ -45,40 +41,40 @@ def diagnose():
     #     return redirect(url_for('result'))
     return render_template('diagnose/diagnose.html', title='Diagnose', form=form)
 
-@app.route('/api/get_user_input', methods=[POST])
+@app.route('/api/get_user_input', methods=["POST", "GET"])
 def inp():
-    meanradiusvalue = request.form.get('radValue')
-    meantexturevalue = request.form.get('textureValue')
-    meanperimetervalue = request.form.get('perValue')
-    meanareavalue = request.form.get('areaValue')
-    meansmoothnessvalue = request.form.get('smoothValue')
-    meancompactnessvalue = request.form.get('compactValue')
-    meanconcavityvalue = request.form.get('concaveValue')
-    meanconcavepointsvalue = request.form.get('cpointsValue')
-    meansymmetryvalue = request.form.get('symValue')
-    meanfractaldimensionvalue = request.form.get('fractValue')
-    radiuserrorvalue = request.form.get('raderrValue')
-    textureerrorvalue = request.form.get('textureerrValue')
-    perimetererrorvalue = request.form.get('pererrValue')
-    areaerrorvalue = request.form.get('areaerrValue')
-    smoothnesserrorvalue = request.form.get('smootherrValue')
-    compactnesserrorvalue = request.form.get('compacterrValue')
-    concavityerrorvalue = request.form.get('concaveerrValue')
-    concavepointserrorvalue = request.form.get('cpointserrValue')
-    symmetryerrorvalue = request.form.get('symerrValue')
-    fractaldimensionerrorvalue = request.form.get('fracterrValue')
-    worstradiusvalue = request.form.get('wradValue')
-    worsttexturevalue = request.form.get('wtextureValue')
-    worstperimetervalue = request.form.get('wperValue')
-    worstareavalue = request.form.get('wareaValue')
-    worstsmoothnessvalue = request.form.get('wsmoothValue')
-    worstcompactnessvalue = request.form.get('wcompactValue')
-    worstconcavityvalue = request.form.get('wconcaveValue')
-    worstconcavepointsvalue = request.form.get('wcpointsValue')
-    worstsymmetryvalue = request.form.get('wsymValue')
-    worstfractaldimensionvalue = request.form.get('wfractValue')
+    meanradiusvalue = request.form.get('radValues')
+    meantexturevalue = request.form.get('textureValues')
+    meanperimetervalue = request.form.get('perValues')
+    meanareavalue = request.form.get('areaValues')
+    meansmoothnessvalue = request.form.get('smoothValues')
+    meancompactnessvalue = request.form.get('compactValues')
+    meanconcavityvalue = request.form.get('concaveValues')
+    meanconcavepointsvalue = request.form.get('cpointsValues')
+    meansymmetryvalue = request.form.get('symValues')
+    meanfractaldimensionvalue = request.form.get('fractValues')
+    radiuserrorvalue = request.form.get('raderrValues')
+    textureerrorvalue = request.form.get('textureerrValues')
+    perimetererrorvalue = request.form.get('pererrValues')
+    areaerrorvalue = request.form.get('areaerrValues')
+    smoothnesserrorvalue = request.form.get('smootherrValues')
+    compactnesserrorvalue = request.form.get('compacterrValues')
+    concavityerrorvalue = request.form.get('concaveerrValues')
+    concavepointserrorvalue = request.form.get('cpointserrValues')
+    symmetryerrorvalue = request.form.get('symerrValues')
+    fractaldimensionerrorvalue = request.form.get('fracterrValues')
+    worstradiusvalue = request.form.get('wradValues')
+    worsttexturevalue = request.form.get('wtextureValues')
+    worstperimetervalue = request.form.get('wperValues')
+    worstareavalue = request.form.get('wareaValues')
+    worstsmoothnessvalue = request.form.get('wsmoothValues')
+    worstcompactnessvalue = request.form.get('wcompactValues')
+    worstconcavityvalue = request.form.get('wconcaveValues')
+    worstconcavepointsvalue = request.form.get('wcpointsValues')
+    worstsymmetryvalue = request.form.get('wsymValues')
+    worstfractaldimensionvalue = request.form.get('wfractValues')
 
-
+    print(meanradiusvalue);
     test_input = [
     {
         'meanradiusvalue': meanradiusvalue,
@@ -113,8 +109,17 @@ def inp():
         'worstfractaldimensionvalue': worstfractaldimensionvalue
     }]
 
-    result = test_result.get_user_input(test_input)
+    resultValue = test_result.get_user_input(test_input)
 
+    redirect('/result/<int:resultValue>')
     app.run()
-    redirect(url_for('result'))
 
+
+@app.route('/result/<int:resultValue>', methods=["GET"])
+def resultpage(resultValue):
+    if resultValue == 0:
+        resultString = "You do not have cancer"
+        return redirect(url_for('result/<string:resultString>'))
+    
+    resultString = "You have cancer"
+    return redirect(url_for('result/<string:resultString>'))

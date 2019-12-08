@@ -1,21 +1,22 @@
-{% extends "layout.html" %}
 <html>
 
 <head>
-
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnose.css') }}" />
+    <title>Diagnose Page</title>
 </head>
 
 <body>
-    {% block body %}
-    {{ super() }}
+        <div class="imgClass"></div>
 
-    <h3>{{  }}</h3>
-    {% endblock %}
-
+        <div class="textPart">
+            <h2>Please find your result below</h2>
+            <p>{{ resultString }}</p>
+        </div>
+        
+        <footer>
+            <p class="footerTxt">Basella et thaDev</p>
+        </footer>
 </body>
 
 </html>
-
-<body>
-    <h1>Hello, {{ user.username }}!</h1>
-</body>

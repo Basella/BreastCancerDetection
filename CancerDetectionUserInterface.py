@@ -89,6 +89,39 @@ def diagnose(userInput):
     y_predict = svc_model.predict(X_test)
     return y_predict[0]
 
+userInputDataFrameOne = [[
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]]
+
 
 window = Tk()
 

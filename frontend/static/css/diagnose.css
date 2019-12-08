@@ -21,29 +21,17 @@ body {
     margin-top: 10px;
 }
 
-.diagName {
-    font-size: 1.6em;
-    color: white;
-    font-style: italic;
-    z-index: 0;
-    text-align: left;
-    margin-left: 2%;
-}
-
-.subWrite {
-    margin-right: 3%;
-}
-
-h1{
+h2{
     text-align: center;
-    font-size: 5em;
     color: rgb(229, 92, 241);
 }
 
-h3, .txt {
-    text-align: right;
-    font-size: 2em;
+.headTitle {
+    font-size: 1.2em;
     color: white;
+    z-index: 0;
+    text-align: left;
+    margin-left: 2%;
 }
 
 footer {
@@ -63,20 +51,47 @@ footer {
     padding-bottom: 5px;
 }
 
-.startDiagnosisButton {
-    text-align: center;
-    margin-top: 100px;
-}
-
 button {
     background-color: #008CBA;
     border-radius: 5px;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 20px 2px;
+    /* margin: 4px 2px; */
     cursor: pointer;
+}
+
+.row {
+    text-align: center;
+}
+
+.first, .second {
+    float: left;
+}
+
+.first {
+    margin-left: 7%;
+    margin-right: 3%;
+    color: white;
+}
+
+.second {
+    margin-left: 10%;
+    color: white;
+}
+
+.third {
+    margin-left: 30%;
+    color: white;
+}
+
+.showResult {
+    text-align: right;
+}
+
+.row {
+    color: white;
 }

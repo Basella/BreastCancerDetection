@@ -15,7 +15,7 @@ from sklearn.datasets import load_breast_cancer
 
 def get_user_input(userInput):
 
-       inputDataFrame = pd.DataFrame(userInput)
+       inputDataFrame = pd.DataFrame(userInput, index=[0])
 
        return train_test_model(inputDataFrame)
 
@@ -49,25 +49,44 @@ def train_test_model(userInputDataFrame):
        #training with our training dataset
        svc_model.fit(X, y)
 
-       #predicting with the userInput dataset after training
-       y_predict = svc_model.predict(userInputDataFrame)
-
        #lets improve our model by normalizing our training data 
        X_min = X.min()
        X_max = X.max()
        X_range = (X_max- X_min)
        X_scaled = (X - X_min)/(X_range)
-       X_scaled.head()
 
        #lets improve our model by normalizing our test data 
        userInputDataFrame_min = userInputDataFrame.min()
        userInputDataFrame_range = (userInputDataFrame - userInputDataFrame_min).max()
        userInputDataFrame_scaled = (userInputDataFrame - userInputDataFrame_min)/userInputDataFrame_range
-       userInputDataFrame_scaled.head()
 
        #lets load our Support Vector Machine Model again and train our data with it furthermore
        svc_model = gg()
        #training our 80% normailised training dataset
        svc_model.fit(X_scaled, y)
 
-       userInputDataFrame_scaled = [{'mean radius': 1, 'mean texture': 0.9, 'mean perimeter': 0.5, 'mean area': 0.1, 'mean smoothness': 0.2, 'mean compactness': 0.3, 'mean concavity': 0.1, 'mean concave points': 0.2, 'mean symmetry': 0.1, 'mean fractal dimension': 0.2, 'radius error': 0.1, 'texture error': 0.4, 'perimeter error': 0.2, 'area error': 140, 'smoothness error': 150, 'compactness error': 200, 'concavity error': 140, 'concavity 
+       #lets predict with our training dataset
+       y_predict = svc_model.predict(userInputDataFrame_scaled)
+       print(y_predict)
+
+       #send message of patient's status
+       # if y_predict == 0:
+       #        return "You do not have cancer"
+       # return "You have cancer"
+
+
+def get_result_accuracy(y_predict):
+
+       #lets import confusion matrix
+       from sklearn.metrics import classification_report, confusion_matrix
+
+       cm = np.array(confusion_matrix(y_test, y_predict, labels=[1,0]))
+
+       print(classification_report(y_test, y_predict))
+
+
+
+
+
+
+#lets vsualise how correct our training dataset was with the aid of the imported confusion matrix

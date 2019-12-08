@@ -18,10 +18,14 @@
         <div>
             <div class="imgClass"></div>
 
+            <p class="diagName">E Diagnostic Center</p>
             <div class="textPart">
                 <h1>Breast Cancer Detector</h1>
-                <h3>This site assists in the detection of breast cancer using Machine learning.</h3>
-                <p class="txt">The model used is Support Vector Model(SVM)</p>
+                <h3 class="subWrite">This site aids the early detection and identification of breast cancer</h3>
+            </div>
+
+            <div class="startDiagnosisButton">
+                <a href="{{ url_for('diagnose') }}"><button type="button">Start Diagnosis</button></a>
             </div>
 
             <footer>
