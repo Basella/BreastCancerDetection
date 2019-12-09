@@ -15,7 +15,7 @@ from sklearn.datasets import load_breast_cancer
 
 def get_user_input(userInput):
 
-       inputDataFrame = pd.DataFrame(userInput, index=[0])
+       inputDataFrame = pd.DataFrame(userInput)
 
        return train_test_model(inputDataFrame)
 
@@ -56,9 +56,11 @@ def train_test_model(userInputDataFrame):
        X_scaled = (X - X_min)/(X_range)
 
        #lets improve our model by normalizing our test data 
-       userInputDataFrame_min = userInputDataFrame.min()
-       userInputDataFrame_range = (userInputDataFrame - userInputDataFrame_min).max()
-       userInputDataFrame_scaled = (userInputDataFrame - userInputDataFrame_min)/userInputDataFrame_range
+       # userInputDataFrame_min = userInputDataFrame.min()
+       # userInputDataFrame_range = (userInputDataFrame - userInputDataFrame_min).max()
+       # userInputDataFrame_scaled = (userInputDataFrame - userInputDataFrame_min)/userInputDataFrame_range
+
+       # print(userInputDataFrame_scaled)
 
        #lets load our Support Vector Machine Model again and train our data with it furthermore
        svc_model = gg()
@@ -66,13 +68,9 @@ def train_test_model(userInputDataFrame):
        svc_model.fit(X_scaled, y)
 
        #lets predict with our training dataset
-       y_predict = svc_model.predict(userInputDataFrame_scaled)
-       print(y_predict)
+       y_predict = svc_model.predict(userInputDataFrame)
 
-       #send message of patient's status
-       # if y_predict == 0:
-       #        return "You do not have cancer"
-       # return "You have cancer"
+       return y_predict
 
 
 def get_result_accuracy(y_predict):

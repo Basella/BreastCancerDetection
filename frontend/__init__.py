@@ -6,9 +6,7 @@ from frontend.forms import TextForm
 
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config.from_object(Config)
-# app.config.from_pyfile('config.py')
 
 # Load the file specified by the APP_CONFIG_FILE environment variable
 # Variables defined here will override those in the default configuration
@@ -18,17 +16,14 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-from views.dashboard import dashboard_blueprint
 from views.diagnose import diagnose_blueprint
 from views.result import result
 from frontend.api import note as test_result
 # from .util import assets
 
 # register blueprint
-app.register_blueprint(dashboard_blueprint)
 app.register_blueprint(diagnose_blueprint)
 app.register_blueprint(result)
-# app.register_blueprint(test_result, url_prefix='/api')
 
 @app.route('/')
 def index():
@@ -37,89 +32,95 @@ def index():
 @app.route('/diagnose', methods=["GET", "POST"])
 def diagnose():
     form = TextForm()
-    # if form.validate_on_submit():
-    #     return redirect(url_for('result'))
     return render_template('diagnose/diagnose.html', title='Diagnose', form=form)
 
 @app.route('/api/get_user_input', methods=["POST", "GET"])
 def inp():
-    meanradiusvalue = request.form.get('radValues')
-    meantexturevalue = request.form.get('textureValues')
-    meanperimetervalue = request.form.get('perValues')
-    meanareavalue = request.form.get('areaValues')
-    meansmoothnessvalue = request.form.get('smoothValues')
-    meancompactnessvalue = request.form.get('compactValues')
-    meanconcavityvalue = request.form.get('concaveValues')
-    meanconcavepointsvalue = request.form.get('cpointsValues')
-    meansymmetryvalue = request.form.get('symValues')
-    meanfractaldimensionvalue = request.form.get('fractValues')
-    radiuserrorvalue = request.form.get('raderrValues')
-    textureerrorvalue = request.form.get('textureerrValues')
-    perimetererrorvalue = request.form.get('pererrValues')
-    areaerrorvalue = request.form.get('areaerrValues')
-    smoothnesserrorvalue = request.form.get('smootherrValues')
-    compactnesserrorvalue = request.form.get('compacterrValues')
-    concavityerrorvalue = request.form.get('concaveerrValues')
-    concavepointserrorvalue = request.form.get('cpointserrValues')
-    symmetryerrorvalue = request.form.get('symerrValues')
-    fractaldimensionerrorvalue = request.form.get('fracterrValues')
-    worstradiusvalue = request.form.get('wradValues')
-    worsttexturevalue = request.form.get('wtextureValues')
-    worstperimetervalue = request.form.get('wperValues')
-    worstareavalue = request.form.get('wareaValues')
-    worstsmoothnessvalue = request.form.get('wsmoothValues')
-    worstcompactnessvalue = request.form.get('wcompactValues')
-    worstconcavityvalue = request.form.get('wconcaveValues')
-    worstconcavepointsvalue = request.form.get('wcpointsValues')
-    worstsymmetryvalue = request.form.get('wsymValues')
-    worstfractaldimensionvalue = request.form.get('wfractValues')
+    meanradiusvalue = request.form.get('meanradiusvalue')
+    meantexturevalue = request.form.get('meantexturevalue')
+    meanperimetervalue = request.form.get('meanperimetervalue')
+    meanareavalue = request.form.get('meanareavalue')
+    meansmoothnessvalue = request.form.get('meansmoothnessvalue')
+    meancompactnessvalue = request.form.get('meancompactnessvalue')
+    meanconcavityvalue = request.form.get('meanconcavityvalue')
+    meanconcavepointsvalue = request.form.get('meanconcavepointsvalue')
+    meansymmetryvalue = request.form.get('meansymmetryvalue')
+    meanfractaldimensionvalue = request.form.get('meanfractaldimensionvalue')
+    radiuserrorvalue = request.form.get('radiuserrorvalue')
+    textureerrorvalue = request.form.get('textureerrorvalue')
+    perimetererrorvalue = request.form.get('perimetererrorvalue')
+    areaerrorvalue = request.form.get('areaerrorvalue')
+    smoothnesserrorvalue = request.form.get('smoothnesserrorvalue')
+    compactnesserrorvalue = request.form.get('compactnesserrorvalue')
+    concavityerrorvalue = request.form.get('concavityerrorvalue')
+    concavepointserrorvalue = request.form.get('concavepointserrorvalue')
+    symmetryerrorvalue = request.form.get('symmetryerrorvalue')
+    fractaldimensionerrorvalue = request.form.get('fractaldimensionerrorvalue')
+    worstradiusvalue = request.form.get('worstradiusvalue')
+    worsttexturevalue = request.form.get('worsttexturevalue')
+    worstperimetervalue = request.form.get('worstperimetervalue')
+    worstareavalue = request.form.get('worstareavalue')
+    worstsmoothnessvalue = request.form.get('worstsmoothnessvalue')
+    worstcompactnessvalue = request.form.get('worstcompactnessvalue')
+    worstconcavityvalue = request.form.get('worstconcavityvalue')
+    worstconcavepointsvalue = request.form.get('worstconcavepointsvalue')
+    worstsymmetryvalue = request.form.get('worstsymmetryvalue')
+    worstfractaldimensionvalue = request.form.get('worstfractaldimensionvalue')
 
-    print(meanradiusvalue);
     test_input = [
     {
-        'meanradiusvalue': meanradiusvalue,
-        'meantexturevalue': meantexturevalue,
-        'meanperimetervalue':meanperimetervalue,
-        'meanareavalue': meanareavalue,
-        'meansmoothnessvalue': meansmoothnessvalue,
-        'meancompactnessvalue': meancompactnessvalue,
-        'meanconcavityvalue': meanconcavityvalue,
-        'meanconcavepointsvalue': meanconcavepointsvalue,
-        'meansymmetryvalue': meansymmetryvalue,
-        'meanfractaldimensionvalue': meanfractaldimensionvalue,
-        'radiuserrorvalue': radiuserrorvalue,
-        'textureerrorvalue': textureerrorvalue,
-        'perimetererrorvalue': perimetererrorvalue,
-        'areaerrorvalue': areaerrorvalue,
-        'smoothnesserrorvalue': smoothnesserrorvalue,
-        'compactnesserrorvalue': compactnesserrorvalue,
-        'concavityerrorvalue': concavityerrorvalue,
-        'concavepointserrorvalue': concavepointserrorvalue,
-        'symmetryerrorvalue': symmetryerrorvalue,
-        'fractaldimensionerrorvalue': fractaldimensionerrorvalue,
-        'worstradiusvalue': worstradiusvalue,
-        'worsttexturevalue': worsttexturevalue,
-        'worstperimetervalue': worstperimetervalue,
-        'worstareavalue': worstareavalue,
-        'worstsmoothnessvalue': worstsmoothnessvalue,
-        'worstcompactnessvalue': worstcompactnessvalue,
-        'worstconcavityvalue': worstconcavityvalue,
-        'worstconcavepointsvalue': worstconcavepointsvalue,
-        'worstsymmetryvalue': worstsymmetryvalue,
-        'worstfractaldimensionvalue': worstfractaldimensionvalue
+        'meanradiusvalue': float(meanradiusvalue),
+        'meantexturevalue': float(meantexturevalue),
+        'meanperimetervalue': float(meanperimetervalue),
+        'meanareavalue': float(meanareavalue),
+        'meansmoothnessvalue': float(meansmoothnessvalue),
+        'meancompactnessvalue': float(meancompactnessvalue),
+        'meanconcavityvalue': float(meanconcavityvalue),
+        'meanconcavepointsvalue': float(meanconcavepointsvalue),
+        'meansymmetryvalue': float(meansymmetryvalue),
+        'meanfractaldimensionvalue': float(meanfractaldimensionvalue),
+        'radiuserrorvalue': float(radiuserrorvalue),
+        'textureerrorvalue': float(textureerrorvalue),
+        'perimetererrorvalue': float(perimetererrorvalue),
+        'areaerrorvalue': float(areaerrorvalue),
+        'smoothnesserrorvalue': float(smoothnesserrorvalue),
+        'compactnesserrorvalue': float(compactnesserrorvalue),
+        'concavityerrorvalue': float(concavityerrorvalue),
+        'concavepointserrorvalue': float(concavepointserrorvalue),
+        'symmetryerrorvalue': float(symmetryerrorvalue),
+        'fractaldimensionerrorvalue': float(fractaldimensionerrorvalue),
+        'worstradiusvalue': float(worstradiusvalue),
+        'worsttexturevalue': float(worsttexturevalue),
+        'worstperimetervalue': float(worstperimetervalue),
+        'worstareavalue': float(worstareavalue),
+        'worstsmoothnessvalue': float(worstsmoothnessvalue),
+        'worstcompactnessvalue': float(worstcompactnessvalue),
+        'worstconcavityvalue': float(worstconcavityvalue),
+        'worstconcavepointsvalue': float(worstconcavepointsvalue),
+        'worstsymmetryvalue': float(worstsymmetryvalue),
+        'worstfractaldimensionvalue': float(worstfractaldimensionvalue)
     }]
 
     resultValue = test_result.get_user_input(test_input)
 
-    redirect('/result/<int:resultValue>')
-    app.run()
+    if resultValue == 0:
+        return redirect(url_for('resultpage', resultValue=0, test_input=test_input))
+    return redirect(url_for('resultpage', resultValue=1, test_input=test_input))
+
+    if __name__ == "__main__":
+        app.run()
 
 
-@app.route('/result/<int:resultValue>', methods=["GET"])
-def resultpage(resultValue):
+@app.route('/resultcheck/<int:resultValue>/<test_input>', methods=["GET"])
+def resultpage(resultValue, test_input):
     if resultValue == 0:
         resultString = "You do not have cancer"
-        return redirect(url_for('result/<string:resultString>'))
+        return redirect(url_for('mainresultpage', resultString='You do not have cancer', test_input=test_input))
     
     resultString = "You have cancer"
-    return redirect(url_for('result/<string:resultString>'))
+    return redirect(url_for('mainresultpage', resultString='You have cancer', test_input=test_input))
+
+@app.route('/result/<string:resultString>/<test_input>', methods=["GET"])
+def mainresultpage(resultString, test_input):
+
+    return render_template("result/result.html", resultString=resultString, test_input=test_input)
