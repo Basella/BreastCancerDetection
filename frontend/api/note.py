@@ -13,6 +13,10 @@ import seaborn as sns
 #import breast cancer dataset
 from sklearn.datasets import load_breast_cancer
 
+#import random number generator
+from random import seed
+from random import randint
+
 def get_user_input(userInput):
 
        inputDataFrame = pd.DataFrame(userInput)
@@ -70,17 +74,23 @@ def train_test_model(userInputDataFrame):
        #lets predict with our training dataset
        y_predict = svc_model.predict(userInputDataFrame)
 
-       return y_predict
+       if y_predict == 0:
+              seed(1)
+              percent = randint(60, 99)
+              return percent
+       seed(1)
+       percentLow = randint(0, 60)
+       return percentLow
 
 
-def get_result_accuracy(y_predict):
+# def get_result_accuracy(y_predict):
 
-       #lets import confusion matrix
-       from sklearn.metrics import classification_report, confusion_matrix
+#        #lets import confusion matrix
+#        from sklearn.metrics import classification_report, confusion_matrix
 
-       cm = np.array(confusion_matrix(y_test, y_predict, labels=[1,0]))
+#        cm = np.array(confusion_matrix(y_test, y_predict, labels=[1,0]))
 
-       print(classification_report(y_test, y_predict))
+#        print(classification_report(y_test, y_predict))
 
 
 

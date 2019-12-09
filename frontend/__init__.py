@@ -103,24 +103,12 @@ def inp():
 
     resultValue = test_result.get_user_input(test_input)
 
-    if resultValue == 0:
-        return redirect(url_for('resultpage', resultValue=0, test_input=test_input))
-    return redirect(url_for('resultpage', resultValue=1, test_input=test_input))
+    return redirect(url_for('resultpage', resultValue=resultValue, test_input=test_input))
 
     if __name__ == "__main__":
         app.run()
 
 
-@app.route('/resultcheck/<int:resultValue>/<test_input>', methods=["GET"])
+@app.route('/result/<int:resultValue>/<test_input>', methods=["GET"])
 def resultpage(resultValue, test_input):
-    if resultValue == 0:
-        resultString = "You do not have cancer"
-        return redirect(url_for('mainresultpage', resultString='You do not have cancer', test_input=test_input))
-    
-    resultString = "You have cancer"
-    return redirect(url_for('mainresultpage', resultString='You have cancer', test_input=test_input))
-
-@app.route('/result/<string:resultString>/<test_input>', methods=["GET"])
-def mainresultpage(resultString, test_input):
-
-    return render_template("result/result.html", resultString=resultString, test_input=test_input)
+        return render_template("result/result.html", resultValue=resultValue, test_input=test_input)
