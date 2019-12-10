@@ -1,3 +1,3 @@
 import breastcancerdetector
 
-FLASK_APP = breastcancerdetector.py
+FLASK_APP = breastcancerdetector

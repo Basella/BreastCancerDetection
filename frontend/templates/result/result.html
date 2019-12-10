@@ -11,7 +11,7 @@
 
         <div class="textPart" style="margin-top: 30px; margin-left: 5%; margin-right: 5%;">
             <h1 style="color: rgb(229, 92, 241); text-align: center;">Result</h1>
-            <h3 style="color: #008CBA; text-align: center; font-size: 1.5em;">Diagnosis: {{ resultValue }}% severity</h3>
+            <h3 style="color: #008CBA; text-align: center; font-size: 1.5em; font-weight: bold;">Diagnosis: {{ resultValue }}% severity</h3>
             <p style="color: #008CBA; font-size: 1.2em;">This has been calculated with the following information:</p>
             <div class="info" style="text-align: justify; color: white; font-size: 1.5em;">
                 <p class="inform">
@@ -19,8 +19,8 @@
                 </p>
             </div>
 
-            <div style="text-align: right;">
-                <button type="button">Print Result</button>
+            <div style="text-align: right; padding-top: 10%;">
+                <a href="{{ url_for('index') }}"><button type="button">Print Result</button></a>
             </div>
         </div>
         

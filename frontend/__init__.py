@@ -1,8 +1,10 @@
 from flask import Flask, render_template, url_for, redirect, request
 from config import Config
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from frontend.forms import TextForm
+from waitress import serve
 
 
 app = Flask(__name__)
@@ -105,10 +107,13 @@ def inp():
 
     return redirect(url_for('resultpage', resultValue=resultValue, test_input=test_input))
 
-    if __name__ == "__main__":
-        app.run()
 
 
 @app.route('/result/<int:resultValue>/<test_input>', methods=["GET"])
 def resultpage(resultValue, test_input):
         return render_template("result/result.html", resultValue=resultValue, test_input=test_input)
+
+
+if __name__ == '__main__':
+        # app.run()
+        serve(app)

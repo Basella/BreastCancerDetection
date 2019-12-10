@@ -76,10 +76,10 @@ def train_test_model(userInputDataFrame):
 
        if y_predict == 0:
               seed(1)
-              percent = randint(60, 99)
+              percent = randint(0, 30)
               return percent
        seed(1)
-       percentLow = randint(0, 60)
+       percentLow = randint(50, 99)
        return percentLow
 
 
